@@ -3,6 +3,7 @@ import { useState } from "react";
 import { getUserDetails } from "../services/actions/actions";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const mapStateToProps = (state) => ({
   storeData: state.userItems.userData,
   editData: state.editData || {},
@@ -14,6 +15,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 function Home(props) {
   let { id } = useParams();
+  const navigate = useNavigate();
   // console.log("props--->",props)
   // const arr=[];
   const [index, setindex] = useState("");
@@ -58,6 +60,7 @@ function Home(props) {
       middleName: "",
       lastName: "",
     });
+    navigate('/usertable');
   };
 
   const handleChange = (e) => {
